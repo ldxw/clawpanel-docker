@@ -147,6 +147,7 @@ jobs:
 
           rsync -a --delete \
             --exclude ".git" \
+            --exclude ".github/workflows" \
             upstream-src/ \
             version-work/
 
