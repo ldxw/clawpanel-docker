@@ -71,7 +71,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ${{ env.IMAGE_NAME }}:latest
-            ${{ env.IMAGE_NAME }}:${{ steps.date.outputs.tag }}
+            ${{ env.IMAGE_NAME }}:gateway-latest
+            ${{ env.IMAGE_NAME }}:gateway-${{ steps.date.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
