@@ -1,8 +1,22 @@
 FROM node:22-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ca-certificates \
- && rm -rf /var/lib/apt/lists/*
+    wget \
+    unzip \
+    jq \
+    ffmpeg \
+    python3 \
+    python3-pip \
+    build-essential \
+    locales \
+    gh \
+    fontconfig \
+    fonts-noto-cjk \
+    fonts-noto-color-emoji \
+    fonts-wqy-zenhei \
+    && ca-certificates \
+    && fc-cache -fv \
+    && rm -rf /var/lib/apt/lists/* /tmp/*
 
 WORKDIR /app
 
