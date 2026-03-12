@@ -4,17 +4,17 @@ on:
   workflow_dispatch:
     inputs:
       upstream_version:
-        description: "留空=自动获取最新正式版；填写例如 v1.0.0=构建指定版本"
+        description: 留空=自动获取最新正式版；填写例如 v1.0.0=构建指定版本
         required: false
         default: ""
         type: string
       push_latest_tag:
-        description: "是否额外推送 latest 标签"
+        description: 是否额外推送 latest 标签
         required: false
         default: false
         type: boolean
       force_rebuild:
-        description: "即使 GHCR 已存在同版本标签也强制重建"
+        description: 即使 GHCR 已存在同版本标签也强制重建
         required: false
         default: false
         type: boolean
@@ -142,7 +142,9 @@ jobs:
         run: |
           set -euo pipefail
 
+          rm -rf version-work
           mkdir -p version-work
+
           rsync -a --delete \
             --exclude ".git" \
             upstream-src/ \
@@ -174,9 +176,9 @@ jobs:
             git switch --orphan "${VERSION}"
           fi
 
-          find . -mindepth 1 -maxdepth 1 ! -name ".git" -exec rm -rf {} +
-
-          rsync -a --delete ../version-work/ ./
+          rsync -a --delete \
+            --exclude ".git" \
+            ../version-work/ ./
 
           git add -A
 
