@@ -14,9 +14,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-noto-cjk \
     fonts-noto-color-emoji \
     fonts-wqy-zenhei \
-    && ca-certificates \
-    && fc-cache -fv \
-    && rm -rf /var/lib/apt/lists/* /tmp/*
+    ca-certificates \
+    git \
+    curl \
+ && fc-cache -fv \
+ && rm -rf /var/lib/apt/lists/* /tmp/*
 
 WORKDIR /app
 
