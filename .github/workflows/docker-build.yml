@@ -18,8 +18,8 @@ on:
         required: false
         default: false
         type: boolean
-  schedule:
-    - cron: "30 2 * * *"
+  # schedule:
+  #   - cron: "30 2 * * *"
 
 env:
   UPSTREAM_REPO: qingchencloud/clawpanel
